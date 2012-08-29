@@ -14,5 +14,7 @@
   <%= @book.user.email %>
 </p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
+<% if current_user && @book.user.id == current_user.id %>
+  <%= link_to 'Edit', edit_book_path(@book) %> |
+<% end %>
 <%= link_to 'Back', books_path %>

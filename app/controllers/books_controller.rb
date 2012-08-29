@@ -35,7 +35,7 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
-    @book = Book.find(params[:id])
+    @book = current_user.books.find(params[:id])
   end
 
   # POST /books
@@ -57,7 +57,7 @@ class BooksController < ApplicationController
   # PUT /books/1
   # PUT /books/1.json
   def update
-    @book = Book.find(params[:id])
+    @book = current_user.books.find(params[:id])
 
     respond_to do |format|
       if @book.update_attributes(params[:book])
@@ -73,7 +73,7 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
-    @book = Book.find(params[:id])
+    @book = current_user.books.find(params[:id])
     @book.destroy
 
     respond_to do |format|

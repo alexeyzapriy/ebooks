@@ -1,6 +1,9 @@
 Ebooks::Application.routes.draw do
   
-  resources :books
+  resources :books 
+  # resources :books do 
+    # resources :comments
+  # end
 
   devise_for :users
 
