@@ -1,10 +1,9 @@
 Ebooks::Application.routes.draw do
+   
+  resources :books do 
+    resources :comments
+  end
   
-  resources :books 
-  # resources :books do 
-    # resources :comments
-  # end
-
   devise_for :users
 
   root :to => "books#index"

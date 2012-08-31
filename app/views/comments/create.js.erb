@@ -1,0 +1,5 @@
+<% if @comment.valid? %>
+  location.href = "<%= book_path(@book) %>";
+<% else %>
+  $('p.errors').prepend("<%= @comment.errors.full_messages.first %>")
+<% end %>
