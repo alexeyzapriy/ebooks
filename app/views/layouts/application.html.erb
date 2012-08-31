@@ -5,6 +5,9 @@
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "chosen" %>
+    <%= javascript_include_tag "prototype" %>
+    <%= javascript_include_tag "chosen" %>
   </head>
   <body>
     <p class="notice">
@@ -22,5 +25,25 @@
       </div>
       <footer></footer>
     </div>
+    <script type="text/javascript">
+      document.observe('dom:loaded', function(evt) {
+        var select, selects, _i, _len, _results;
+        if (Prototype.Browser.IE && (Prototype.BrowserFeatures['Version'] === 6 || Prototype.BrowserFeatures['Version'] === 7)) {
+          return;
+        }
+        selects = $$(".chzn-select");
+        _results = [];
+        for (_i = 0, _len = selects.length; _i < _len; _i++) {
+          select = selects[_i];
+          _results.push(new Chosen(select));
+        }
+        deselects = $$(".chzn-select-deselect");
+        for (_i = 0, _len = deselects.length; _i < _len; _i++) {
+          select = deselects[_i];
+          _results.push(new Chosen(select,{allow_single_deselect:true}));
+        }
+        return _results;
+      });
+    </script>
   </body>
 </html>
